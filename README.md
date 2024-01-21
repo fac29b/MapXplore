@@ -30,14 +30,15 @@ cd travel-mashup
 npm install
 ```
 
-4. Create a `.env` file in the root directory and add the following API keys:
+4. Create a `.env` file in the root directory and add the API key:
 
 ```env
 openweathermapAPI=your_openweathermap_api_key
-googleAPI=your_google_api_key
 ```
 
-Replace `your_openweathermap_api_key` and `your_google_api_key` with your actual API keys.
+Replace `your_openweathermap_api_key` with your actual OpenWeatherMap API key.
+
+**Note:** The `googleAPI` key is a front-end API key used and stored in the `public/script.js` file to interact with Google Maps APIs. It is important to secure this API key by restricting its usage to specific IP addresses. To enhance security, consider adding your IP address or the IP address of your server to the API key restrictions on the [Google Cloud Console](https://console.cloud.google.com/). This way, the API key can only be used from your specified IP address, reducing the risk of unauthorized usage.
 
 ## How to Run
 
@@ -63,7 +64,7 @@ This project uses Mocha and Chai for testing. Ensure that the server is not runn
 
 Project brief includes displaying APIs on a static HTML page
 
-[Project brief](https://foundersandcoders.notion.site/FAC29B-Server-Side-Dynamic-Web-Application-Project-ef144d4b5886459ab394b163f41f88aa)
+[FAC Project brief](https://foundersandcoders.notion.site/FAC29B-Server-Side-Dynamic-Web-Application-Project-ef144d4b5886459ab394b163f41f88aa)
 
 ## Contributing
 
