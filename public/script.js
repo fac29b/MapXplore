@@ -59,3 +59,5 @@ async function fetchRandomPostcode() {
 fetchRandomPostcode();
 // fetchWeather();
 
+// Event listener for the button
+document.getElementById("fetchButton").addEventListener("click", fetchRandomPostcode);
