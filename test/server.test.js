@@ -19,4 +19,11 @@ describe('Server API endpoints', () => {
     expect(data).to.have.property('longitude');
     expect(data).to.have.property('latitude');
   });
+
+  it('should fail for a non-existent endpoint', async () => {
+    const response = await fetch('http://localhost:3000/nonExistentEndpoint');
+    const data = await response.json(); // Assuming your server returns JSON for 404 errors
+    expect(response.status).to.equal(404);
+    // Add more specific assertions based on your error handling logic
+  });
 });
