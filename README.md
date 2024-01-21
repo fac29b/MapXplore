@@ -2,6 +2,16 @@
 
 The Travel Mashup project is a web application that provides information about the weather at random locations found via postcode. Additionally, the application displays the location on a Google Map and provides a Google Street View.
 
+## Table of Contents
+
+1. [Technologies Used](#technologies-used)
+2. [Installation](#installation)
+3. [How to Run](#how-to-run)
+4. [How to Test](#how-to-test)
+5. [FAC Foundation Final Project](#fac-foundation-final-project)
+6. [Contributing](#contributing)
+7. [License](#license)
+
 ## Technologies Used
 
 - Node.js
