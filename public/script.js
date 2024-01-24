@@ -42,9 +42,9 @@ async function fetchWeather(latitude, longitude) {
 }
 
 // Fetch Google Maps
-async function fetchGoogleMaps(lat, long) {
+async function fetchGoogleMaps(lat, long, zoom) {
   const googleAPIKey = `AIzaSyDcbd-8Rx1dTuVngfg8Qg_wfiQyXH1uJeQ`;
-  const googleMapSrc = `https://www.google.com/maps/embed/v1/place?key=${googleAPIKey}&q=${lat},${long}`;
+  const googleMapSrc = `https://www.google.com/maps/embed/v1/place?key=${googleAPIKey}&q=${lat},${long}&zoom=${zoom}`;
   const googleStreetSrc = `https://www.google.com/maps/embed/v1/streetview?key=${googleAPIKey}&location=${lat},${long}&heading=210&pitch=10&fov=35`;
 
   document.getElementById("googleMap").src = googleMapSrc;
@@ -70,7 +70,7 @@ async function fetchRandomPostcode() {
     
     await fetchPostcodeDescription(data);
     await fetchWeather(data.latitude, data.longitude);
-    await fetchGoogleMaps(data.latitude, data.longitude);
+    await fetchGoogleMaps(data.latitude, data.longitude, 11);
     await displayPostcodeInfo(data.postcode, data.longitude, data.latitude)
 
   } catch (error) {
