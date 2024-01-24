@@ -44,9 +44,12 @@ npm install
 
 ```env
 openweathermapAPI=your_openweathermap_api_key
+OPENAI_API_KEY=your_openAI_api_key
 ```
 
 Replace `your_openweathermap_api_key` with your actual OpenWeatherMap API key.
+Replace `your_openAI_api_key` with your actual OpenAI API key.
+
 
 **Note:** The `googleAPI` key is a front-end API key used and stored in the `public/script.js` file to interact with Google Maps APIs. It is important to secure this API key by restricting its usage to specific IP addresses. To enhance security, consider adding your IP address or the IP address of your server to the API key restrictions on the [Google Cloud Console](https://console.cloud.google.com/). This way, the API key can only be used from your specified IP address, reducing the risk of unauthorized usage.
 
