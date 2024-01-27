@@ -7,13 +7,13 @@ import OpenAI from "openai";
 export const app = express();
 dotenv.config();
 app.use(express.static("public"));
+app.use(express.json());
 
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
 });
 
 const weatherAPI = process.env.openweathermapAPI;
-const googleAPI = process.env.googleAPI;
 const openaiAPI = process.env.openaiAPI;
 let globalPostcode = "";
 
@@ -54,6 +54,13 @@ const openai = new OpenAI({
 });
 
 app.get("/openai", async (req, res) => {
+  try {
+    const { message } = req.body; // Extract the user's message from the request body
+    if (!message) {
+      return res.status(400).json({ error: "Message is required" });
+    }
+
+
   const completion = await openai.chat.completions.create({
     messages: [
       {
@@ -65,4 +72,8 @@ app.get("/openai", async (req, res) => {
     max_tokens: 300,
   });
   res.json(completion);
+} catch (error) {
+  console.error("Error:", error);
+  res.status(500).json({ error: "Internal server error" });
+}
 });

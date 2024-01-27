@@ -1,9 +1,9 @@
 // public/script.js
 
 // Fetch description of postcode from openAI API
-async function fetchPostcodeDescription() {
+async function fetchPostcodeDescription(message) {
   try {
-    const response = await fetch(`/openai`);
+    const response = await fetch(`/openai?message=${encodeURIComponent(message)}`);
     if (!response.ok) {
       throw new Error(`Error: ${response.status} - ${response.statusText}`);
     }
@@ -15,6 +15,13 @@ async function fetchPostcodeDescription() {
   }
 }
 
+document.getElementById("sendButton").addEventListener("click", () => {
+    const message = document.getElementById("userMessage").value.trim();
+    if (message) {
+      fetchPostcodeDescription(message);
+    }
+  });
+  
 // Fetch weather from weather API
 async function fetchWeather(latitude, longitude) {
   const response = await fetch(`/weather?lat=${latitude}&lon=${longitude}`);
