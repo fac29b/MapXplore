@@ -1,3 +1,28 @@
+:root {
+  --gunmetal: #272d2dff;
+  --rose-quartz: #a39ba8ff;
+  --powder-blue: #b8c5d6ff;
+  --alice-blue: #edf5fcff;
+  --emerald: #23ce6bff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+  color: var(--alice-blue);
+  background-color: var(--gunmetal);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 .map-container,
 .street-container {
   overflow: hidden;
@@ -8,9 +33,86 @@
 .map-container iframe,
 .street-container iframe {
   border: 0;
-  height: 100%;
+  height: 500px;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.large-width {
+  max-width: 90%;
+  margin: auto;
+  padding: 1rem;
+}
+
+.mid-width {
+  max-width: 30%;
+  margin: 1rem;
+  padding: 1rem;
+  min-height: 20rem;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.bold-text {
+  font-weight: 900;
+}
+
+.pad-1 {
+  padding: 1rem;
+}
+
+.marg-1 {
+  margin: 1rem;
+}
+
+.hide {
+  display: none;
+}
+
+.button {
+  background-color: var(--alice-blue);
+  color: var(--gunmetal);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.4rem;
+  margin: 0.3rem 0.1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  transition: 0.7s;
+}
+
+.button:hover {
+  background-color: var(--emerald);
+  color: var(--alice-blue);
+  transform: scale(1.05);
+}
+
+/* Loading DIV */
+
+#loading {
+  height: 65vh;
+}
+
+#loading > div {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

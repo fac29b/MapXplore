@@ -33,12 +33,19 @@ app.get("/randomPostcode", async (req, res) => {
   const randomPostcodeData = await fetch(
     "http://api.postcodes.io/random/postcodes",
   ).then((res) => res.json());
-  const { postcode, longitude, latitude } = randomPostcodeData.result;
+  const { postcode, longitude, latitude, parliamentary_constituency, country } =
+    randomPostcodeData.result;
 
   globalPostcode = postcode;
 
   // Respond with postcode, longitude, and latitude
-  res.json({ postcode, longitude, latitude });
+  res.json({
+    postcode,
+    longitude,
+    latitude,
+    parliamentary_constituency,
+    country,
+  });
 });
 
 // Open AI API Integration
