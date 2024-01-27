@@ -62,7 +62,7 @@ async function fetchRandomPostcode() {
 
     await fetchPostcodeDescription(data);
     await fetchWeather(data.latitude, data.longitude);
-    await fetchGoogleMaps(data.latitude, data.longitude, 11);
+    await fetchGoogleMaps(data.latitude, data.longitude, 9);
     await displayPostcodeInfo(
       data.postcode,
       data.longitude,
