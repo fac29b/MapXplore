@@ -116,3 +116,31 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+#chat-box {
+  width: 600px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+#chat-history {
+  height: 200px;
+  overflow-y: scroll;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+/* Input box */
+#user-input {
+  width: 70%;
+  padding: 5px;
+}
+
+.user-message {
+  color: pink;
+}
+
+button {
+  padding: 5px;
+}
