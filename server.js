@@ -13,7 +13,6 @@ app.listen(3000, () => {
 });
 
 const weatherAPI = process.env.openweathermapAPI;
-const googleAPI = process.env.googleAPI;
 const openaiAPI = process.env.openaiAPI;
 let globalPostcode = "";
 
@@ -54,14 +53,20 @@ const openai = new OpenAI({
 });
 
 app.get("/openai", async (req, res) => {
+  const userInput = req.query.userInput || ""; // Extract user input from the query parameters
+
   const completion = await openai.chat.completions.create({
     messages: [
       {
         role: "system",
-        content: `You are a friendly travel guide with great knowledge of uk locations. Please give a short description of the uk postcode ${globalPostcode}, talking about information of the postcode and local area. Please resond in 200 words or less.`,
+        content: `You are a friendly travel guide with great knowledge of uk locations. Please give a short description of the uk postcode ${globalPostcode}, talking about information of the postcode and local area. Please respond in 2-3 sentances.`,
+      },
+      {
+        role: "user",
+        content: userInput, // Include user input in the messages sent to ChatGPT
       },
     ],
-    model: "gpt-3.5-turbo",
+    model: "gpt-4",
     max_tokens: 300,
   });
   res.json(completion);

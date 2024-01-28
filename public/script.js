@@ -1,5 +1,8 @@
 // public/script.js
 
+const botChatHistory = [];
+const chatHistory = document.getElementById("chat-history");
+
 // Fetch description of postcode from openAI API
 async function fetchPostcodeDescription() {
   try {
@@ -8,8 +11,10 @@ async function fetchPostcodeDescription() {
       throw new Error(`Error: ${response.status} - ${response.statusText}`);
     }
     const data = await response.json();
-    document.getElementById("about").innerHTML =
-      data.choices[0].message.content;
+    const chatGPTMessage = data.choices[0].message.content;
+    // document.getElementById("about").innerHTML = chatGPTMessage;
+    chatHistory.innerHTML += `<div class="chatgpt-message"><b>ChatGPT:</b> ${chatGPTMessage}</div>`;
+    botChatHistory.push(`ChatGPT message: ${chatGPTMessage}`);
   } catch (error) {
     console.log("error fetching postcode description", error.message);
   }
@@ -96,12 +101,47 @@ async function hide() {
   fetchButton.disabled = true;
 }
 
+function clearChatDiv() {
+  chatHistory.innerHTML = "";
+}
+
 fetchRandomPostcode();
 hide();
 
 // Event listener for the button
 
 fetchButton.addEventListener("click", () => {
+  clearChatDiv()
   hide();
   fetchRandomPostcode();
 });
+
+// Function to send user message to ChatGPT
+async function sendMessage() {
+  const userInput = document.getElementById("user-input").value;
+  if (userInput.trim() === "") return;
+
+  // Display user message in the chat history
+  // const chatHistory = document.getElementById("chat-history");
+  chatHistory.innerHTML += `<div class="user-message"><b>User:</b> ${userInput}</div>`;
+
+  try {
+    // Send user message to the server
+    botChatHistory.push(`User Message: ${userInput}`)
+    const response = await fetch(`/openai?userInput=${botChatHistory}`);
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    }
+
+    // Display ChatGPT's response in the chat history
+    const data = await response.json();
+    const chatResponse = data.choices[0].message.content;
+    chatHistory.innerHTML += `<div class="chatgpt-message"><b>ChatGPT:</b> ${chatResponse}</div>`;
+    botChatHistory.push(`ChatGPT message: ${chatResponse}`)
+
+    // Clear the user input field
+    document.getElementById("user-input").value = "";
+  } catch (error) {
+    console.log("Error sending message to ChatGPT:", error.message);
+  }
+}
