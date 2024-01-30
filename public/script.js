@@ -111,23 +111,26 @@ hide();
 // Event listener for the button
 
 fetchButton.addEventListener("click", () => {
-  clearChatDiv()
+  clearChatDiv();
   hide();
   fetchRandomPostcode();
 });
 
 // Function to send user message to ChatGPT
 async function sendMessage() {
-  const userInput = document.getElementById("user-input").value;
+  const userInput = await document.getElementById("user-input").value;
+  document.getElementById("user-input").value = "";
+
   if (userInput.trim() === "") return;
 
   // Display user message in the chat history
   // const chatHistory = document.getElementById("chat-history");
   chatHistory.innerHTML += `<div class="user-message"><b>User:</b> ${userInput}</div>`;
+  await scrollToBottom();
 
   try {
     // Send user message to the server
-    botChatHistory.push(`User Message: ${userInput}`)
+    botChatHistory.push(`User Message: ${userInput}`);
     const response = await fetch(`/openai?userInput=${botChatHistory}`);
     if (!response.ok) {
       throw new Error(`Error: ${response.status} - ${response.statusText}`);
@@ -137,11 +140,22 @@ async function sendMessage() {
     const data = await response.json();
     const chatResponse = data.choices[0].message.content;
     chatHistory.innerHTML += `<div class="chatgpt-message"><b>ChatGPT:</b> ${chatResponse}</div>`;
-    botChatHistory.push(`ChatGPT message: ${chatResponse}`)
+    botChatHistory.push(`ChatGPT message: ${chatResponse}`);
 
     // Clear the user input field
-    document.getElementById("user-input").value = "";
+    await scrollToBottom();
   } catch (error) {
     console.log("Error sending message to ChatGPT:", error.message);
   }
+}
+
+document.getElementById("chat-button").addEventListener("click", sendMessage);
+document.getElementById("chat-box").addEventListener("keypress", function (e) {
+  if (e.key === "Enter" && !e.shiftKey) {
+    sendMessage(e);
+  }
+});
+
+async function scrollToBottom() {
+  chatHistory.scrollTop = chatHistory.scrollHeight;
 }
