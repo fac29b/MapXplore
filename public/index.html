@@ -9,9 +9,7 @@
   <body>
     <header class="center-text">
       <h1 class="pad-1 marg-1">UK POSTCODE TRAVEL MASHUP</h1>
-      <button type="submit" id="fetchButton" class="button">
-        Generate Postcode
-      </button>
+      <button id="fetchButton" class="button">Generate Postcode</button>
     </header>
 
     <section id="main" class="hide">
@@ -47,18 +45,18 @@
         </div>
       </div>
 
-      <!-- About Sections -->
-
-      <!-- <div class="center-text large-width">
-        <h2 class="pad-1">About</h2>
-        <p id="about"></p>
-      </div> -->
-
       <!-- Chat Box Section -->
       <div id="chat-box">
         <div id="chat-history"></div>
-        <input type="text" id="user-input" placeholder="Type your message...">
-        <button onclick="sendMessage()">Send</button>
+        <div class="flex-row space-between">
+          <input
+            type="text"
+            id="user-input"
+            placeholder="Type your message..."
+            value=" "
+          />
+          <button id="chat-button" type="submit" class="button2">Send</button>
+        </div>
       </div>
     </section>
 

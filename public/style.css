@@ -51,6 +51,10 @@ body {
   align-items: center;
 }
 
+.space-between {
+  justify-content: space-between;
+}
+
 .large-width {
   max-width: 90%;
   margin: auto;
@@ -118,7 +122,7 @@ body {
 }
 
 #chat-box {
-  width: 600px;
+  width: 50vw;
   margin: 20px auto;
   border: 1px solid #ccc;
   padding: 10px;
@@ -141,6 +145,37 @@ body {
   color: pink;
 }
 
-button {
-  padding: 5px;
+.button2 {
+  background-color: var(--alice-blue);
+  color: var(--gunmetal);
+  padding: 0.3rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  margin: 0.3rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  transition: 0.7s;
+  min-width: 28%;
+}
+
+.button2:hover {
+  background-color: var(--emerald);
+  color: var(--alice-blue);
+  transform: scale(1.05);
+}
+
+@media only screen and (max-width: 1280px) {
+  #chat-box {
+    width: 90%;
+  }
+
+  .mid-width {
+    max-width: 90%;
+  }
+
+  #chat-history {
+    height: 80vh;
+  }
 }
