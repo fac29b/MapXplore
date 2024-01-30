@@ -175,6 +175,10 @@ body {
     max-width: 90%;
   }
 
+  .street-container, .map-container {
+    height: 40vh !important;
+  }
+
   #chat-history {
     height: 80vh;
   }
