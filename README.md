@@ -1,6 +1,6 @@
 # Travel Mashup Project
 
-The Travel Mashup project is a web application that provides information about the weather at random locations found via postcode. Additionally, the application displays the location on a Google Map and provides a Google Street View.
+The Travel Mashup project is a web application that provides information about the weather at random locations found via postcode. Additionally, the application displays the location on a Google Map and provides a Google Street View with a ChatGPT powered chat box to also give interactive information about the location.
 
 ## Table of Contents
 
@@ -8,9 +8,10 @@ The Travel Mashup project is a web application that provides information about t
 2. [Installation](#installation)
 3. [How to Run](#how-to-run)
 4. [How to Test](#how-to-test)
-5. [FAC Foundation Final Project](#fac-foundation-final-project)
-6. [Contributing](#contributing)
-7. [License](#license)
+5. [Deployment on AWS](#deployment-on-aws)
+6. [FAC Foundation Final Project](#fac-foundation-final-project)
+7. [Contributing](#contributing)
+8. [License](#license)
 
 ## Technologies Used
 
@@ -18,7 +19,8 @@ The Travel Mashup project is a web application that provides information about t
 - Express.js
 - Fetch API for making HTTP requests
 - HTML, CSS, JavaScript for the front-end
-- Mocha and Chai for testing
+- Chai for testing
+- Various API's used
 
 ## Installation
 
@@ -40,7 +42,7 @@ cd travel-mashup
 npm install
 ```
 
-4. Create a `.env` file in the root directory and add the API key:
+4. Create a `.env` file in the root directory and add the API keys:
 
 ```env
 openweathermapAPI=your_openweathermap_api_key
@@ -71,6 +73,14 @@ npm test
 ```
 
 This project uses Mocha and Chai for testing. Ensure that the server is not running while running the tests.
+
+## Deployment on AWS
+
+The Travel Mashup project is deployed on AWS. You can access the deployed application by visiting the following URL:
+
+[Travel Mashup AWS Deployment](http://18.170.214.75:3000/)
+
+To access the deployed application on AWS, you can SSH into the CLI for Amazon, clone the repository using Git commands, and set it to run with PM2.
 
 ## FAC Foundation final project
 
