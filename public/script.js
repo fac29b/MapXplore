@@ -63,7 +63,6 @@ async function fetchRandomPostcode() {
       throw new Error(`Error: ${response.status} - ${response.statusText}`);
     }
     const data = await response.json();
-    console.log(data);
 
     await fetchPostcodeDescription(data);
     await fetchWeather(data.latitude, data.longitude);
@@ -114,6 +113,7 @@ fetchButton.addEventListener("click", () => {
   clearChatDiv();
   hide();
   fetchRandomPostcode();
+  botChatHistory.length = 0;
 });
 
 // Function to send user message to ChatGPT
