@@ -47,6 +47,34 @@ app.get("/randomPostcode", async (req, res) => {
   });
 });
 
+app.get("/specificPostcode/:postcode", async (req, res) => {
+  const postcodeInput = req.params.postcode;
+  try {
+    const specificPostcodeData = await fetch(
+    `http://api.postcodes.io/postcodes/${postcodeInput}`
+  ).then((res) => res.json());
+
+  console.log("API Response:", specificPostcodeData);
+
+  const { postcode, longitude, latitude, parliamentary_constituency, country } =
+    specificPostcodeData.result;
+
+  globalPostcode = postcodeInput;
+
+  // Respond with postcode, longitude, and latitude
+  res.json({
+    postcode,
+    longitude,
+    latitude,
+    parliamentary_constituency,
+    country,
+  });
+} catch (error) {
+  console.error("Error fetching specific postcode:", error.message);
+  res.status(500).json({ error: "Internal Server Error" });
+}
+});
+
 // Open AI API Integration
 const openai = new OpenAI({
   apiKey: openaiAPI,

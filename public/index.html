@@ -9,7 +9,22 @@
   <body>
     <header class="center-text">
       <h1 class="pad-1 marg-1">UK POSTCODE TRAVEL MASHUP</h1>
+
+      <!-- random postcode button -->
       <button id="fetchButton" class="button">Generate Postcode</button>
+
+      <!-- specific postcode -->
+      <div id="postcodeForm" class="flex-row space-between postcodeForm">
+        <input
+          type="text"
+          id="postcodeInput"
+          pattern="^([A-Z][A-HJ-Y]?\d[A-Z\d]? ?\d[A-Z]{2}|GIR ?0A{2})$"
+          placeholder="Your postcode"
+          value=""
+        />
+        
+        <button id="postcodeButton" type="submit" class="button">Submit Postcode</button>
+      </div>
     </header>
 
     <section id="main" class="hide">
@@ -48,7 +63,7 @@
       <!-- Chat Box Section -->
       <div id="chat-box">
         <div id="chat-history"></div>
-        <div class="flex-row space-between">
+        <div class="flex-row space-between chatboxForm">
           <input
             type="text"
             id="user-input"

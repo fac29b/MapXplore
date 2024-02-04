@@ -80,9 +80,38 @@ async function fetchRandomPostcode() {
   }
 }
 
+// Fetch specific postcode
+async function fetchSpecificPostcode(postcodeInput) {
+  try {
+    const response = await fetch(`/specificPostcode/${postcodeInput}`);
+    console.log(`fetchSpecificPostcode initial value: ${postcodeInput}`);
+    
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    }
+    const data = await response.json();
+    console.log(data);
+
+    await fetchPostcodeDescription(data);
+    await fetchWeather(data.latitude, data.longitude);
+    await fetchGoogleMaps(data.latitude, data.longitude, 9);
+    await displayPostcodeInfo(
+      data.postcode,
+      data.longitude,
+      data.latitude,
+      data.parliamentary_constituency,
+      data.country,
+    );
+    await unhide();
+  } catch (error) {
+    console.error("Error fetching specific postcode:", error.message);
+  }
+}
+
 const mainContainer = document.getElementById("main");
 const loadContainer = document.getElementById("loading");
 const fetchButton = document.getElementById("fetchButton");
+const postcodeButton = document.getElementById("postcodeButton");
 
 async function unhide() {
   loadContainer.classList.contains("hide")
@@ -113,6 +142,13 @@ fetchButton.addEventListener("click", () => {
   clearChatDiv();
   hide();
   fetchRandomPostcode();
+  botChatHistory.length = 0;
+});
+
+postcodeButton.addEventListener("click", () => {
+  clearChatDiv();
+  hide();
+  fetchSpecificPostcode();
   botChatHistory.length = 0;
 });
 
@@ -158,4 +194,16 @@ document.getElementById("chat-box").addEventListener("keypress", function (e) {
 
 async function scrollToBottom() {
   chatHistory.scrollTop = chatHistory.scrollHeight;
+}
+
+// specific postcode button
+
+document.getElementById('postcodeButton').addEventListener('click', function() {
+  submitPostcode();
+});
+
+function submitPostcode() {
+  var postcodeValue = document.getElementById('postcodeInput').value;
+  console.log('Submitted postcode:', postcodeValue);
+  fetchSpecificPostcode(postcodeValue);
 }
