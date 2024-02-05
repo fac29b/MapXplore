@@ -39,7 +39,7 @@ async function fetchWeather(latitude, longitude) {
 
 // Fetch Google Maps
 async function fetchGoogleMaps(lat, long, zoom) {
-  const googleAPIKey = `AIzaSyDcbd-8Rx1dTuVngfg8Qg_wfiQyXH1uJeQ`;
+  const googleAPIKey = `AIzaSyAOoUQg1XsYFZEFMx4Vamav89abe22Ne9w`;
   const googleMapSrc = `https://www.google.com/maps/embed/v1/place?key=${googleAPIKey}&q=${lat},${long}&zoom=${zoom}`;
   const googleStreetSrc = `https://www.google.com/maps/embed/v1/streetview?key=${googleAPIKey}&location=${lat},${long}&heading=210&pitch=10&fov=35`;
 
