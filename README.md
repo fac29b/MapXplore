@@ -1,6 +1,6 @@
-# Travel Mashup Project
+# MapXplore
 
-The Travel Mashup project is a web application that provides information about the weather at random locations found via postcode. Additionally, the application displays the location on a Google Map and provides a Google Street View with a ChatGPT powered chat box to also give interactive information about the location.
+MapXplore is a web application that transports you to a random UK postcode. It displays information about the weather, and location on a Google Map with Google Street View and a ChatGPT-powered chat box to give interactive information about the location.
 
 ## Table of Contents
 
@@ -76,9 +76,9 @@ This project uses Mocha and Chai for testing. Ensure that the server is not runn
 
 ## Deployment on AWS
 
-The Travel Mashup project is deployed on AWS. You can access the deployed application by visiting the following URL:
+MapXplore is deployed on AWS. You can access the deployed application by visiting the following URL:
 
-[Travel Mashup AWS Deployment](http://18.170.214.75:3000/)
+[MapXplore AWS Deployment](http://18.170.214.75:3000/)
 
 To access the deployed application on AWS, you can SSH into the CLI for Amazon, clone the repository using Git commands, and set it to run with PM2.
 
